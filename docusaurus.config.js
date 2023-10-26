@@ -21,16 +21,12 @@ const config = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
   plugins: [
     [
       '@docusaurus/plugin-content-blog',
@@ -64,21 +60,21 @@ const config = {
         beforeDefaultRehypePlugins: [],
         truncateMarker: /<!--\s*(truncate)\s*-->/,
         showReadingTime: true,
-        feedOptions: {
-          type: 'all',
-          title: '',
-          description: '',
-          copyright: '',
-          language: undefined,
-          createFeedItems: async (params) => {
-            const { blogPosts, defaultCreateFeedItems, ...rest } = params;
-            return defaultCreateFeedItems({
-              // keep only the 10 most recent blog posts in the feed
-              blogPosts: blogPosts.filter((item, index) => index < 10),
-              ...rest,
-            });
-          },
-        },
+        // feedOptions: {
+        //   type: 'all',
+        //   title: '',
+        //   description: '',
+        //   copyright: '',
+        //   language: undefined,
+        //   createFeedItems: async (params) => {
+        //     const { blogPosts, defaultCreateFeedItems, ...rest } = params;
+        //     return defaultCreateFeedItems({
+        //       // keep only the 10 most recent blog posts in the feed
+        //       blogPosts: blogPosts.filter((item, index) => index < 10),
+        //       ...rest,
+        //     });
+        //   },
+        // },
       },
     ],
   ],
