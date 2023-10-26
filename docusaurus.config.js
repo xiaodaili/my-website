@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'shanzha的小站',
+  tagline: '🚧小站正在修建中',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -31,6 +31,57 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        path: 'blog',
+        // Simple use-case: string editUrl
+        // editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+        // Advanced use-case: functional editUrl
+        editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
+          `https://github.com/xiaodaili/my-website/blob/main/${blogDirPath}/${blogPath}`,
+        editLocalizedFiles: false,
+        blogTitle: 'Blog title',
+        blogDescription: 'Blog',
+        blogSidebarCount: 5,
+        blogSidebarTitle: 'all my blog',
+        routeBasePath: 'blog',
+        include: ['**/*.{md,mdx}'],
+        exclude: [
+          '**/_*.{js,jsx,ts,tsx,md,mdx}',
+          '**/_*/**',
+          '**/*.test.{js,jsx,ts,tsx}',
+          '**/__tests__/**',
+        ],
+        postsPerPage: 10,
+        blogListComponent: '@theme/BlogListPage',
+        blogPostComponent: '@theme/BlogPostPage',
+        blogTagsListComponent: '@theme/BlogTagsListPage',
+        blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
+        rehypePlugins: [],
+        beforeDefaultRemarkPlugins: [],
+        beforeDefaultRehypePlugins: [],
+        truncateMarker: /<!--\s*(truncate)\s*-->/,
+        showReadingTime: true,
+        feedOptions: {
+          type: 'all',
+          title: '',
+          description: '',
+          copyright: '',
+          language: undefined,
+          createFeedItems: async (params) => {
+            const { blogPosts, defaultCreateFeedItems, ...rest } = params;
+            return defaultCreateFeedItems({
+              // keep only the 10 most recent blog posts in the feed
+              blogPosts: blogPosts.filter((item, index) => index < 10),
+              ...rest,
+            });
+          },
+        },
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -44,13 +95,7 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -73,12 +118,21 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
+            position: 'right',
+            label: '文章',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: '博客', position: 'right' },
+          // { label: '归档', to: 'blog/archive', position: 'right' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            label: '更多',
+            position: 'right',
+            items: [
+              { label: '归档', to: 'blog/archive' },
+              { label: '读书笔记', to: 'docs/读书笔记' }
+            ],
+          },
+          {
+            href: 'https://github.com/xiaodaili',
             label: 'GitHub',
             position: 'right',
           },
@@ -91,43 +145,43 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'About',
+                to: '/docs/about',
               },
             ],
           },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+          //   {
+          //     title: 'Community',
+          //     items: [
+          //       {
+          //         label: 'Stack Overflow',
+          //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          //       },
+          //       {
+          //         label: 'Discord',
+          //         href: 'https://discordapp.com/invite/docusaurus',
+          //       },
+          //       {
+          //         label: 'Twitter',
+          //         href: 'https://twitter.com/docusaurus',
+          //       },
+          //     ],
+          //   },
+          //   {
+          //     title: 'More',
+          //     items: [
+          //       {
+          //         label: 'Blog',
+          //         to: '/blog',
+          //       },
+          //       {
+          //         label: 'GitHub',
+          //         href: 'https://github.com/facebook/docusaurus',
+          //       },
+          //     ],
+          //   },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} PRESENT, shanzha. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
