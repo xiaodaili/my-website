@@ -3,6 +3,7 @@ slug: long-blog-post
 title: Long Blog Post
 authors: shanzha
 tags: [hello, docusaurus]
+date: 2023-03-04
 ---
 
 This is the summary of a very long blog post,

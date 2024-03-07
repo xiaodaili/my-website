@@ -77,6 +77,24 @@ const config = {
         // },
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'englishNews',
+        path: 'englishNews',
+        routeBasePath: 'englishNews',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'BookNote',
+        path: 'BookNote',
+        routeBasePath: 'BookNote',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
   ],
 
   presets: [
@@ -117,14 +135,20 @@ const config = {
             position: 'right',
             label: '文章',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'right',
+            label: '短文翻译',
+            docsPluginId: 'englishNews'
+          },
           { to: '/blog', label: '博客', position: 'right' },
-          // { label: '归档', to: 'blog/archive', position: 'right' },
           {
             label: '更多',
             position: 'right',
             items: [
               { label: '归档', to: 'blog/archive' },
-              { label: '读书笔记', to: 'docs/读书笔记' }
+              // { label: '读书列表', to: '/BookList' }
             ],
           },
           {

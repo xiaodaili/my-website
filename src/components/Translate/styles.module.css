@@ -1,0 +1,28 @@
+.container {
+  margin-top: 8px;
+  opacity: 0.9;
+  background-color: azure;
+  font-size: 90%;
+}
+
+.container_hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: .75;
+}
+
+.tag {
+  background-color: #ccc;
+  color: #333;
+  padding: 2px;
+  margin-right: 3px;
+}
+
+.content_hidden {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
