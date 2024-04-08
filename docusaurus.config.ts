@@ -60,21 +60,6 @@ const config = {
         beforeDefaultRehypePlugins: [],
         truncateMarker: /<!--\s*(truncate)\s*-->/,
         showReadingTime: true,
-        // feedOptions: {
-        //   type: 'all',
-        //   title: '',
-        //   description: '',
-        //   copyright: '',
-        //   language: undefined,
-        //   createFeedItems: async (params) => {
-        //     const { blogPosts, defaultCreateFeedItems, ...rest } = params;
-        //     return defaultCreateFeedItems({
-        //       // keep only the 10 most recent blog posts in the feed
-        //       blogPosts: blogPosts.filter((item, index) => index < 10),
-        //       ...rest,
-        //     });
-        //   },
-        // },
       },
     ],
     [
@@ -92,6 +77,15 @@ const config = {
         id: 'BookNote',
         path: 'BookNote',
         routeBasePath: 'BookNote',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'JavaScript',
+        path: 'JavaScript',
+        routeBasePath: 'JavaScript',
         sidebarPath: require.resolve('./sidebars.js'),
       },
     ],
@@ -148,7 +142,12 @@ const config = {
             position: 'right',
             items: [
               { label: '归档', to: 'blog/archive' },
-              // { label: '读书列表', to: '/BookList' }
+              {
+                type: 'docSidebar',
+                sidebarId: 'tutorialSidebar',
+                label: '技术总结',
+                docsPluginId: 'JavaScript'
+              },
             ],
           },
           {
@@ -166,7 +165,7 @@ const config = {
             items: [
               {
                 label: 'About',
-                to: '/docs/about',
+                to: '/about',
               },
             ],
           },
