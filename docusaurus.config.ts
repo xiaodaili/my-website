@@ -35,8 +35,7 @@ const config = {
         // Simple use-case: string editUrl
         // editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         // Advanced use-case: functional editUrl
-        editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
-          `https://github.com/xiaodaili/my-website/blob/main/${blogDirPath}/${blogPath}`,
+        editUrl: ({ locale, blogDirPath, blogPath, permalink }) => `https://github.com/xiaodaili/my-website/blob/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
         blogTitle: 'Blog title',
         blogDescription: 'Blog',
@@ -44,12 +43,7 @@ const config = {
         blogSidebarTitle: 'all my blog',
         routeBasePath: 'blog',
         include: ['**/*.{md,mdx}'],
-        exclude: [
-          '**/_*.{js,jsx,ts,tsx,md,mdx}',
-          '**/_*/**',
-          '**/*.test.{js,jsx,ts,tsx}',
-          '**/__tests__/**',
-        ],
+        exclude: ['**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**'],
         postsPerPage: 10,
         blogListComponent: '@theme/BlogListPage',
         blogPostComponent: '@theme/BlogPostPage',
@@ -95,25 +89,24 @@ const config = {
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/xiaodaili/my-website/blob/main',
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
@@ -134,7 +127,7 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'right',
             label: '短文翻译',
-            docsPluginId: 'englishNews'
+            docsPluginId: 'englishNews',
           },
           { to: '/blog', label: '博客', position: 'right' },
           {
@@ -146,7 +139,7 @@ const config = {
                 type: 'docSidebar',
                 sidebarId: 'tutorialSidebar',
                 label: '技术总结',
-                docsPluginId: 'JavaScript'
+                docsPluginId: 'JavaScript',
               },
             ],
           },
@@ -206,7 +199,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }),
+    },
 };
 
 module.exports = config;
